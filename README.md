@@ -20,7 +20,7 @@ Just download the deploy.py file and type:
 
 where:
 
-  - **_alias_** is the name of your Django project (directory name with no spaces)
+  - **_alias_** is the project name of your Django application (directory name with no spaces)
   - **_port_** is the port used by gunicorn process
   - **_workers_** is the number of workers
   - **_python_version_** is python2 or python3
