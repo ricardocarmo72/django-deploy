@@ -1,25 +1,29 @@
 # django-deploy
 
-This is a python script that creates a new Django application on development or production server, deploying automatically trough nginx webserver.
+This is a python script that creates a new Django application on development or production server, deploying automatically trough NGINX webserver.
 
+### Pre-requisites
 This script assumes the following pre-requisites:
 
--Your server has supervisor installed on /etc/supervisor
--The archive /etc/supervisor/supervisord.conf contains the line:
+- Your server has NGINX installed on /etc/nginx
+- Your server has supervisor installed on /etc/supervisor
+- The archive /etc/supervisor/supervisord.conf contains the line:
 
-files=/var/www/supervisor/*.conf
+`files=/var/www/supervisor/*.conf`
 
--Your server has nginx installed on /etc/nginx
--The script must to be running with root privileges.
+- The script must to be running with root privileges.
 
-To run the script:
-python deploy.py alias xxxx n url_web
+### How to use
+Just download the deploy.py file and type:
 
-Where:
-alias: Is a name to your app, used in directories names.
-xxxx: Is the port to bind gunicorn process.
-n: Number of workers.
-url_web: server url to your app.
+`python deploy.py <alias> <port> <workers> <python_version> <django_version> <url>`
 
-Sample:
-sudo python deploy.py mywebapp 8001 3 http://www.mywebapp.com
+where:
+
+  - **_alias_** is the name of your Django project (directory name with no spaces)
+  - **_port_** is the port used by gunicorn process
+  - **_workers_** is the number of workers
+  - **_python_version_** is python2 or python3
+  - **_django_version_** is the Django version, ex: 1.9, 2.0, 2.0.4 etc
+  - **_url_** is the domain name of application, ex: www.mywebapp.com
+    
