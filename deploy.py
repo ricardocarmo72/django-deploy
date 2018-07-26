@@ -120,7 +120,3 @@ if len(sys.argv)==7:
     newProject(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6])
 else:
     print("São requeridos seis parâmetros, por favor verifique.")
-
-'''
-Exemplo de uso deste script: python new_project.py esic 8090 1 python3 2.0 hml.e-sic.al.gov.br
-'''
