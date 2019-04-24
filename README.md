@@ -19,9 +19,10 @@ Just download the deploy.py file, type:
 `python deploy.py`
 
 And enter the required parameters:
--alias          #ex. myproject
--port           #ex. 8001
--workers        # ex. 2
--python_version # ex. python3
--django_version # ex. 2.0
--url            # ex. myproject.mybusiness.com
+
+- alias          #ex. myproject
+- port           #ex. 8001
+- workers        # ex. 2
+- python_version # ex. python3
+- django_version # ex. 2.0
+- url            # ex. myproject.mybusiness.com
