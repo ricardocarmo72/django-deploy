@@ -23,6 +23,7 @@ workers = %s'''
 INSTALL = '''#!/bin/bash
 virtualenv -p %s env 
 source env/bin/activate
+env/bin/pip install -U pip
 env/bin/pip install Django==%s
 env/bin/pip install gunicorn
 django-admin startproject %s ./public
@@ -70,12 +71,13 @@ def setAllowedHosts(path, url):
     with open(path,'r') as f:
         linhas = f.readlines()
     
-    with open(path,'w') as f:
-        for i in range(len(linhas)):
-            if "ALLOWED_HOSTS" in linhas[i]:
-                f.write("ALLOWED_HOSTS = ['%s']" % url)
-            else: 
-                f.write(linhas[i])
+    f = open(path,'w')
+    for i in range(len(linhas)):
+        if "ALLOWED_HOSTS" in linhas[i]:
+            f.write("ALLOWED_HOSTS = ['%s']\n" % url)
+        else: 
+            f.write(linhas[i]+'\n')
+    f.close()
 
 def newProject(alias, port, workers, python_version, django_version, url):
     dirs = ['/var/www',
@@ -112,11 +114,12 @@ def newProject(alias, port, workers, python_version, django_version, url):
     
     content = ACTIVATE % alias
     runScript(DIR, content)
-    os.remove(DIR+'/run.sh')
     
-    print("Projeto publicado com sucesso.")
+alias          = input("Enter the project alias: ") #ex. myproject
+port           = input("Gunicorn port: ") # ex. 8001
+workers        = input("Number of workers: ") # ex. 2
+python_version = input("Python version: ") # ex. python3, python3.7 etc
+django_version = input("Django version: ") # ex. 2.0
+url            = input("Hostname application: ") # ex. myproject.mybusiness.com
 
-if len(sys.argv)==7:
-    newProject(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6])
-else:
-    print("São requeridos seis parâmetros, por favor verifique.")
+newProject(alias,port,workers,python_version,django_version,url)
