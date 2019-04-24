@@ -14,16 +14,14 @@ This script assumes the following pre-requisites:
 - The script must to be running with root privileges.
 
 ### How to use
-Just download the deploy.py file and type:
+Just download the deploy.py file, type:
 
-`python deploy.py <alias> <port> <workers> <python_version> <django_version> <url>`
+`python deploy.py`
 
-where:
-
-  - **_alias_** is the project name of your Django application (directory name with no spaces)
-  - **_port_** is the port used by gunicorn process
-  - **_workers_** is the number of workers
-  - **_python_version_** is python2 or python3
-  - **_django_version_** is the Django version, ex: 1.9, 2.0, 2.0.4 etc
-  - **_url_** is the domain name of application, ex: www.mywebapp.com
-    
+And enter the required parameters:
+-alias          #ex. myproject
+-port           #ex. 8001
+-workers        # ex. 2
+-python_version # ex. python3
+-django_version # ex. 2.0
+-url            # ex. myproject.mybusiness.com
